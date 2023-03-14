@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors</title>
+    <style>
+        .table {
+            font-family: sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            margin: 25px 0;
+            font-size: 0.9em;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .table thead tr{
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+        .table td, .table th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        .table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+        .table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        .table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+        .table tbody tr.active-row {
+            font-weight: bold;
+            color: #A020F0;
+        }
+    </style>
+</head>
+<body>
+<h1>Author Details</h1>
+<table class = "table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Books</th>
+    </tr>
+    </thead>
+    <tr th:each="author : ${authors}" class="active-row" >
+        <td th:text="${author.id}"></td>
+        <td th:text="${author.fullName}"></td>
+        <td >
+            <ul th:each="book : ${author.books}" style="margin-left: 0; padding-left: 20px;">
+                <li th:text="'Title: ' + ${book.getTitle()} + ' || Book ID: ' + ${book.getId()}"></li>
+            </ul>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
