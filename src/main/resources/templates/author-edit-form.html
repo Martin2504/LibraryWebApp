@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Actor Details</title>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+
+  <!-- localhost:8080/updateAuthor?id=6&fullName=Martin-->
+</head>
+<body>
+<h1>Author Edit Form</h1>
+<form th:action="@{/updateAuthor}" th:object="${authorToEdit}" method="post">  <!-- this button will call the /updateAuthor endpoint -->
+  <input type="hidden" id="id" name="id" th:field="*{id}"/><br/> <!-- hidden so id cant be changed -->
+  <label for="fullName">Full Name</label>
+  <input type="text" id="fullName" name="fullName" th:field="*{fullName}"/><br/>
+  <input type="submit" value="Update"/>
+</form>
+</body>
+</html>

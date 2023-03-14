@@ -5,10 +5,7 @@ import com.sparta.librarywebapp.model.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AuthorController {
@@ -41,5 +38,28 @@ public class AuthorController {
         model.addAttribute("authors", authorRepository.findAll());
         return "authors";
     }
+
+    // Requesting to edit an author
+    @GetMapping("/author/edit/{id}")
+    public String getAuthorToEdit(@PathVariable Integer id, Model model) {
+        Author author = authorRepository.findById(id).orElse(null);
+        model.addAttribute("authorToEdit", author); // Creating model object which is sent to the form
+        return "author-edit-form";
+    }
+
+    // Receives object to edit from a form.
+    @PostMapping("/updateAuthor")
+    public String updateAuthor(@ModelAttribute("authorToEdit")Author editedAuthor) {    // ModelAttribute reads the object form the form instead of needing to dissect the URL.
+        authorRepository.saveAndFlush(editedAuthor);    // saveAndFlush swaps objects with the same id. (like an update)
+        return "edit-success";
+    }
+
+    // Receives object to delete from a form
+    @PostMapping("/author/delete/{id}")
+    public String getAuthorToDelete(@PathVariable Integer id) {
+        authorRepository.deleteById(id);
+        return "delete-success";
+    }
+
 
 }
