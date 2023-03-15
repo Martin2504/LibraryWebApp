@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/css/styles.css">
+<h1>Welcome to my Library</h1>
+<body>
+<ul1>
+  <li1><a th:href="@{/createAuthorPage}">Create An Author</a> </li1>  <!-- Creating a hyperlink -->
+  <li1><a th:href="@{/createBookPage}">Create a Book</a> </li1>
+  <li1><a th:href="@{/findAuthorPage}">Find an Author by id</a>  </li1>
+  <li1><a th:href="@{/findBooksPage}">Find a Book by id</a> </li1>
+  <li1><a th:href="@{/allBooks}">Show all books</a></li1>
+  <li1><a th:href="@{/authors}">Show all Authors</a></li1>
+</ul1>
+</body>
+</html>

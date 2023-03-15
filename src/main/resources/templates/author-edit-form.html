@@ -3,26 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Actor Details</title>
-  <style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-  </style>
 
   <!-- localhost:8080/updateAuthor?id=6&fullName=Martin-->
 </head>
+<link rel="stylesheet" type="text/css" href="/css/styles.css">
 <body>
 <h1>Author Edit Form</h1>
 <form th:action="@{/updateAuthor}" th:object="${authorToEdit}" method="post">  <!-- this button will call the /updateAuthor endpoint -->

@@ -25,19 +25,13 @@ public class AuthorController {
         return "Author " + author.getFullName() + " added";
     }
 
-    // Get author by id.
-    @GetMapping("/author/{id}")
-    public String getAuthorById(Model model, @PathVariable Integer id) {
-        model.addAttribute("author", authorRepository.findById(id).orElse(null));
-        return "author";    // This calls the template
-    }
 
-    // Get all authors
-    @GetMapping("/authors")
-    public String getAllAuthors(Model model) {
-        model.addAttribute("authors", authorRepository.findAll());
-        return "authors";
-    }
+//    // Get all authors
+//    @GetMapping("/authors")
+//    public String getAllAuthors(Model model) {
+//        model.addAttribute("authors", authorRepository.findAll());
+//        return "authors";
+//    }
 
     // Requesting to edit an author
     @GetMapping("/author/edit/{id}")

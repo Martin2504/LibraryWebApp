@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create an Author</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/css/styles.css">
+<body>
+<h1>Author Create Form</h1>
+<form th:action="@{/createAuthor}" th:object="${authorToCreate}" method="post">  <!-- this button will call the /updateAuthor endpoint -->
+  <label for="fullName">Full Name</label>
+  <input type="text" id="fullName" name="fullName" th:field="*{fullName}"/><br/>
+  <input type="submit" value="Create"/>
+</form>
+</body>
+</html>
